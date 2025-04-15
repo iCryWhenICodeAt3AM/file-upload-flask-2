@@ -24,8 +24,10 @@ logger = logging.getLogger(__name__)  # Logger instance for the application
 
 @app.route("/")
 def hello_world():
+
     """Simple route to test if the application is running."""
     logger.info("Accessed the home page.")
+
     return "<p>Hello, World Elisha!</p>"
 
 def allowed_file(filename):
