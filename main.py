@@ -14,6 +14,7 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}  # Allowed file
 ENV_MODE = os.getenv("ENV_MODE")  # Environment mode (e.g., "backend" for API-only responses)
 
 app = Flask(__name__)
+app.secret_key = 'very_secret_key'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Configure logging with a rotating file handler
