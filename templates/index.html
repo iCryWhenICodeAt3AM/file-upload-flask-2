@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
+        }
+        .hero-section {
+            background-color: #f8f9fa;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+        .feature-card {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Product Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/upload-file">Upload Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/images">View Products</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 mb-4">Welcome to Product Management System</h1>
+            <p class="lead mb-4">A powerful tool to manage your products, inventory, and orders with ease.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="/upload-file" class="btn btn-primary btn-lg px-4 gap-3">Upload Product</a>
+                <a href="/images" class="btn btn-outline-secondary btn-lg px-4">View Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row g-4 py-5">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm feature-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">📦</div>
+                        <h3 class="card-title">Product Management</h3>
+                        <p class="card-text">Upload and manage your products with ease. Keep track of inventory and product details.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm feature-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">🖼️</div>
+                        <h3 class="card-title">Image Gallery</h3>
+                        <p class="card-text">View all your product images in an organized gallery. Easy access to all uploads.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm feature-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="card-title">Stock Management</h3>
+                        <p class="card-text">Track inventory levels and manage stock counts for all your products.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

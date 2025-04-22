@@ -1,2 +1,17 @@
+# Python
 venv/
-venv
+__pycache__/
+*.pyc
+
+# Node/NPM
+node_modules/
+dist/
+build/
+
+# Env files
+.env
+*.pem
+
+# If EC2 No need for env config
+config.py
+app.log

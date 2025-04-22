@@ -1,27 +1,110 @@
-<!doctype html>
-<title>Upload new File</title>
-<h1>Upload new File</h1>
-<form method=post enctype=multipart/form-data>
-    <div>
-        <b> Product Name </b>
-        <input type=text name=product_name>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .upload-preview {
+            max-width: 300px;
+            max-height: 300px;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Product Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/upload-file">Upload Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/images">View Products</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Upload New Product</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="product_name" class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="product_name" name="product_name" required>
+                                <div class="invalid-feedback">
+                                    Please provide a product name.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="initial_stock_count" class="form-label">Initial Stock Count</label>
+                                <input type="number" class="form-control" id="initial_stock_count" name="initial_stock_count" required min="0">
+                                <div class="invalid-feedback">
+                                    Please provide a valid stock count.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="file" class="form-label">Product Image</label>
+                                <input type="file" class="form-control" id="file" name="file" accept="image/*" required onchange="previewImage(this)">
+                                <div class="invalid-feedback">
+                                    Please select an image file.
+                                </div>
+                                <img id="preview" class="upload-preview img-thumbnail mt-2">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Upload Product</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <b> Initial Stock Count </b>
-        <input type=text name=initial_stock_count>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function previewImage(input) {
+            const preview = document.getElementById('preview');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.style.display = 'none';
+            }
+        }
 
-    <div>
-        <b> Raw Image </b>
-        <input type=file name=file>
-    </div>
-
-    <br>
-    <br>
-    
-    <div>
-        <input type=submit value=Upload>
-    </div>
-    
-</form>
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+</body>
+</html>
